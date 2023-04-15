@@ -11,15 +11,17 @@ import React from "react";
 type Props = {
   title: string;
   color: string;
+  onPress?: () => void;
 };
 
-const Categorie = ({ title, color }: Props) => {
+const Categorie = ({ title, color, onPress }: Props) => {
   return (
     <View style={styles.gridItem}>
       <Pressable
+        onPress={onPress}
         style={({ pressed }) => [
           styles.button,
-          pressed && styles.buttonPressed,
+          pressed ? styles.buttonPressed : null,
         ]}
       >
         <View style={[styles.innerContainer, { backgroundColor: color }]}>
