@@ -5,11 +5,11 @@ import {
   Image,
   Dimensions,
   ScrollView,
-  Button,
 } from "react-native";
 import React from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { MEALS } from "../data/dummy-data";
+import FavButton from "../components/FavButton";
 
 type MealDetailRoute = {
   params: { mealId: string };
@@ -26,10 +26,14 @@ const MealDetailScreen = () => {
 
   const meal = MEALS.find((meal) => meal.id === mealId);
 
+  const favIconHandler = () => {
+    console.log("re");
+  };
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title="test" />;
+        return <FavButton onPress={favIconHandler} />;
       },
     });
   }, [navigation]);
