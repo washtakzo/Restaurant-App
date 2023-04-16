@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
 import { MEALS } from "../data/dummy-data";
 import { useRoute } from "@react-navigation/native";
+import Meal from "../components/Meal";
 
 type MealsOverviewRoute = {
   params: { categoryId: string };
@@ -30,11 +31,19 @@ const MealsOverviewScreen = ({ route }: Props) => {
 
   return (
     <View style={styles.container}>
-      <Text>{categoryId}</Text>
-      {/* TODO:display in a flatlist */}
-      {displayedMeals.map((meal) => (
-        <Text>{meal.title}</Text>
-      ))}
+      <FlatList
+        data={displayedMeals}
+        renderItem={({ item }) => (
+          <Meal
+            title={item.title}
+            imageUrl={item.imageUrl}
+            duration={item.duration}
+            complexity={item.complexity}
+            affordability={item.affordability}
+          />
+        )}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 };
