@@ -5,9 +5,10 @@ import {
   Image,
   Dimensions,
   ScrollView,
+  Button,
 } from "react-native";
 import React from "react";
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 import { MEALS } from "../data/dummy-data";
 
 type MealDetailRoute = {
@@ -19,10 +20,19 @@ type MealDetailRoute = {
 
 const MealDetailScreen = () => {
   const route = useRoute<MealDetailRoute>();
+  const navigation = useNavigation<Navigation>();
 
   const mealId = route.params.mealId;
 
   const meal = MEALS.find((meal) => meal.id === mealId);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => {
+        return <Button title="test" />;
+      },
+    });
+  }, [navigation]);
 
   return (
     <ScrollView style={styles.screen}>
@@ -38,13 +48,18 @@ const MealDetailScreen = () => {
           <Text style={styles.sectionTitle}>Ingredients</Text>
           <View style={styles.separator} />
           {meal?.ingredients.map((ingredient: string) => (
-            <Text style={styles.sectionItem}>{ingredient}</Text>
+            <Text key={ingredient} style={styles.sectionItem}>
+              {ingredient}
+            </Text>
           ))}
         </View>
         <View style={styles.sectionContainer}>
           <Text style={styles.sectionTitle}>Steps</Text>
+          <View style={styles.separator} />
           {meal?.steps.map((step: string) => (
-            <Text style={styles.sectionItem}>{step}</Text>
+            <Text key={step} style={styles.sectionItem}>
+              {step}
+            </Text>
           ))}
         </View>
       </View>
