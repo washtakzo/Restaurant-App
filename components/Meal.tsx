@@ -7,8 +7,10 @@ import {
   Pressable,
 } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 type Props = {
+  id: string;
   imageUrl: string;
   title: string;
   duration: string;
@@ -17,16 +19,24 @@ type Props = {
 };
 
 const Meal = ({
+  id,
   imageUrl,
   title,
   duration,
   complexity,
   affordability,
 }: Props) => {
+  const navigation = useNavigation<Navigation>();
+
+  const pressHandler = () => {
+    navigation.navigate("MealDetailScreen", { mealId: id });
+  };
+
   return (
     <View style={styles.container}>
       <Pressable
         style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
+        onPress={pressHandler}
       >
         <View style={{ flex: 1 }}>
           <Image source={{ uri: imageUrl }} style={styles.image} />

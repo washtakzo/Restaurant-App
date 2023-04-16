@@ -46,6 +46,7 @@ const MealsOverviewScreen = ({ route, navigation }: Props) => {
         data={displayedMeals}
         renderItem={({ item }) => (
           <Meal
+            id={item.id}
             title={item.title}
             imageUrl={item.imageUrl}
             duration={item.duration}
@@ -66,6 +67,5 @@ const deviceWidth = Dimensions.get("window").width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // padding: deviceWidth / 24,
   },
 });
