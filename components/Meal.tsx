@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: deviceWidth / 24,
     overflow: "hidden",
-    margin: deviceWidth / 26,
+    margin: deviceWidth / 16,
     elevation: 4,
   },
   buttonPressed: {
