@@ -4,6 +4,7 @@ import { MEALS, CATEGORIES } from "../data/dummy-data";
 import { useRoute } from "@react-navigation/native";
 import Meal from "../components/Meal";
 import MealsContext from "../store/meals-context";
+import MealsList from "../components/MealsList";
 
 type MealsOverviewRoute = {
   params: { categoryId: string };
@@ -42,32 +43,9 @@ const MealsOverviewScreen = ({ route, navigation }: Props) => {
     meal.categoryIds.includes(categoryId)
   );
 
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={displayedMeals}
-        renderItem={({ item }) => (
-          <Meal
-            id={item.id}
-            title={item.title}
-            imageUrl={item.imageUrl}
-            duration={item.duration}
-            complexity={item.complexity}
-            affordability={item.affordability}
-          />
-        )}
-        keyExtractor={(item) => item.id}
-      />
-    </View>
-  );
+  return <MealsList items={displayedMeals} />;
 };
 
 export default MealsOverviewScreen;
 
-const deviceWidth = Dimensions.get("window").width;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+const styles = StyleSheet.create({});
