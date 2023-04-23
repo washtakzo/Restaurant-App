@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import { MEALS } from "../data/dummy-data";
+import { MEALS } from "../../data/dummy-data";
 
 type State = {
   meals: Meal[];

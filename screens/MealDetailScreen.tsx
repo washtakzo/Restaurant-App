@@ -10,7 +10,7 @@ import React from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { MEALS } from "../data/dummy-data";
 import FavButton from "../components/FavButton";
-import MealsContext from "../store/meals-context";
+import MealsContext from "../store/context/meals-context";
 
 type MealDetailRoute = {
   params: { mealId: string };

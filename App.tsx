@@ -8,7 +8,7 @@ import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 import MealDetailScreen from "./screens/MealDetailScreen";
 import FavMealsScreen from "./screens/FavMealsScreen";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { MealsContextProvider } from "./store/meals-context";
+import { MealsContextProvider } from "./store/context/meals-context";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

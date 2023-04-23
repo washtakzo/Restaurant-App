@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import React from "react";
-import MealsContext from "../store/meals-context";
+import MealsContext from "../store/context/meals-context";
 import MealsList from "../components/MealsList";
 
 const FavMealsScreen = () => {
