@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Dimensions, FlatList } from "react-native";
 import { MEALS, CATEGORIES } from "../data/dummy-data";
 import { useRoute } from "@react-navigation/native";
 import Meal from "../components/Meal";
+import MealsContext from "../store/meals-context";
 
 type MealsOverviewRoute = {
   params: { categoryId: string };
@@ -23,6 +24,7 @@ type Props = {
 
 const MealsOverviewScreen = ({ route, navigation }: Props) => {
   const route2 = useRoute<MealsOverviewRoute>();
+  const mealsCtx = React.useContext(MealsContext);
 
   const categoryId = route2.params.categoryId;
 
@@ -36,7 +38,7 @@ const MealsOverviewScreen = ({ route, navigation }: Props) => {
     navigation.setOptions({ title: categoryTitle });
   }, [navigation, categoryId]);
 
-  const displayedMeals = MEALS.filter((meal) =>
+  const displayedMeals = mealsCtx.meals.filter((meal) =>
     meal.categoryIds.includes(categoryId)
   );
 

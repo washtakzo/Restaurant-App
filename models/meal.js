@@ -27,6 +27,7 @@ class Meal {
     this.isVegan = isVegan;
     this.isVegetarian = isVegetarian;
     this.isLactoseFree = isLactoseFree;
+    this.isFavorite = false;
   }
 }
 

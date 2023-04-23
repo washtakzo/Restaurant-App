@@ -10,6 +10,7 @@ import React from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { MEALS } from "../data/dummy-data";
 import FavButton from "../components/FavButton";
+import MealsContext from "../store/meals-context";
 
 type MealDetailRoute = {
   params: { mealId: string };
@@ -21,19 +22,26 @@ type MealDetailRoute = {
 const MealDetailScreen = () => {
   const route = useRoute<MealDetailRoute>();
   const navigation = useNavigation<Navigation>();
+  const mealsCtx = React.useContext(MealsContext);
 
   const mealId = route.params.mealId;
 
-  const meal = MEALS.find((meal) => meal.id === mealId);
+  const meal = mealsCtx.meals.find((meal) => meal.id === mealId);
 
   const favIconHandler = () => {
-    console.log("re");
+    console.log({ meal });
+    mealsCtx.toggleFavoriteMeal(meal?.id);
   };
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <FavButton onPress={favIconHandler} />;
+        return (
+          <FavButton
+            onPress={favIconHandler}
+            color={meal!.isFavorite === true ? "#00a6ff" : "#00ff15"}
+          />
+        );
       },
     });
   }, [navigation]);
