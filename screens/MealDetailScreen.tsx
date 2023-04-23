@@ -46,7 +46,7 @@ const MealDetailScreen = () => {
         );
       },
     });
-  }, [navigation]);
+  }, [navigation, meal]);
 
   return (
     <ScrollView style={styles.screen}>
