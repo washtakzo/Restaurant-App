@@ -3,7 +3,7 @@ import Meal from "../models/meal";
 
 export const CATEGORIES = [
   new Category("c1", "Italian", "#f5428d"),
-  new Category("c2", "Quick & Easy", "#f54242"),
+  new Category("c2", "Quick & Easy", "#e63946"),
   new Category("c3", "Hamburgers", "#f5a442"),
   new Category("c4", "German", "#f5d142"),
   new Category("c5", "Light & Lovely", "#368dff"),
@@ -78,7 +78,8 @@ export const MEALS = [
     "Classic Hamburger",
     "pricey",
     "simple",
-    "https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg",
+    // "https://cdn.pixabay.com/photo/2014/10/23/18/05/burger-500054_1280.jpg",
+    "https://i.pinimg.com/originals/1d/95/2d/1d952d483a1618c7f8d813d8c9ebe15f.jpg",
     45,
     [
       "300g Cattle Hack",
@@ -205,7 +206,8 @@ export const MEALS = [
     "Pancakes",
     "affordable",
     "simple",
-    "https://cdn.pixabay.com/photo/2018/07/10/21/23/pancake-3529653_1280.jpg",
+    // "https://cdn.pixabay.com/photo/2018/07/10/21/23/pancake-3529653_1280.jpg",
+    "https://cdn.dribbble.com/users/2060533/screenshots/17563174/breakfast__2_4x.jpg",
     20,
     [
       "1 1/2 Cups all-purpose Flour",
@@ -231,10 +233,11 @@ export const MEALS = [
   new Meal(
     "m8",
     ["c8"],
-    "Creamy Indian Chicken Curry",
+    "Creamy Chicken Curry",
     "pricey",
     "challenging",
-    "https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg",
+    // "https://cdn.pixabay.com/photo/2018/06/18/16/05/indian-food-3482749_1280.jpg",
+    "https://pbs.twimg.com/media/EjV_0kTUcAAnifY.jpg",
     35,
     [
       "4 Chicken Breasts",
