@@ -28,6 +28,8 @@ const MealDetailScreen = () => {
 
   const meal = mealsCtx.meals.find((meal) => meal.id === mealId);
 
+  console.log("render MealDetailScreen");
+
   const favIconHandler = () => {
     console.log({ meal });
     mealsCtx.toggleFavoriteMeal(meal?.id);
@@ -39,7 +41,7 @@ const MealDetailScreen = () => {
         return (
           <FavButton
             onPress={favIconHandler}
-            color={meal!.isFavorite === true ? "#00a6ff" : "#00ff15"}
+            name={meal?.isFavorite ? "star" : "star-outline"}
           />
         );
       },
