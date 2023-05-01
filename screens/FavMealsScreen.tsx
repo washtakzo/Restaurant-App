@@ -1,11 +1,16 @@
 import { StyleSheet, Text, View, FlatList } from "react-native";
 import React from "react";
-import MealsContext from "../store/context/meals-context";
 import MealsList from "../components/MealsList";
+import { MEALS } from "../data/dummy-data";
+//Redux
+import { useSelector } from "react-redux";
 
 const FavMealsScreen = () => {
-  const mealsCtx = React.useContext(MealsContext);
-  const favMeals = mealsCtx.meals.filter((meal) => meal.isFavorite);
+  const favMealsId = useSelector(
+    (state: any) => state.favoriteSection.favoriteMealsId //TODO:state type
+  );
+
+  const favMeals = MEALS.filter((meal) => favMealsId.includes(meal.id));
 
   if (favMeals.length === 0) {
     return <Text>You have no favorite meal yet.</Text>;

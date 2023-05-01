@@ -10,7 +10,8 @@ import React from "react";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import { MEALS } from "../data/dummy-data";
 import FavButton from "../components/FavButton";
-import MealsContext from "../store/context/meals-context";
+import { useSelector, useDispatch } from "react-redux";
+import { favoriteActions } from "../store/redux/favorite-slice";
 
 type MealDetailRoute = {
   params: { mealId: string };
@@ -22,17 +23,17 @@ type MealDetailRoute = {
 const MealDetailScreen = () => {
   const route = useRoute<MealDetailRoute>();
   const navigation = useNavigation<Navigation>();
-  const mealsCtx = React.useContext(MealsContext);
+  const favMealsId = useSelector(
+    (state: any) => state.favoriteSection.favoriteMealsId
+  );
+  const dispatch = useDispatch();
 
   const mealId = route.params.mealId;
 
-  const meal = mealsCtx.meals.find((meal) => meal.id === mealId);
-
-  console.log("render MealDetailScreen");
+  const meal = MEALS.find((meal) => meal.id === mealId);
 
   const favIconHandler = () => {
-    console.log({ meal });
-    mealsCtx.toggleFavoriteMeal(meal?.id);
+    dispatch(favoriteActions.toggleMeal(mealId));
   };
 
   React.useLayoutEffect(() => {
@@ -41,12 +42,12 @@ const MealDetailScreen = () => {
         return (
           <FavButton
             onPress={favIconHandler}
-            name={meal?.isFavorite ? "star" : "star-outline"}
+            name={favMealsId.includes(mealId) ? "star" : "star-outline"}
           />
         );
       },
     });
-  }, [navigation, meal]);
+  }, [navigation, meal, favMealsId]);
 
   return (
     <ScrollView style={styles.screen}>
